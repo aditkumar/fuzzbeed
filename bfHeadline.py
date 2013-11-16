@@ -20,13 +20,14 @@ def findLines(firstWord,fileName):
 
 
 firstWordsFile = open('firstWords.txt')
-firstWord = getFirstWord(firstWordsFile)
-
-
 
 allArticles = open('bfArticles-cleaned.txt')
-randomLine = random.choice(findLines(firstWord,allArticles))
-secondWord = bfUtils.tokenizeLine(randomLine)[1]
-
 m = articleGenerator.Markov(allArticles)
-print m.generate_markov_text(firstWord,secondWord)
+
+for i in range (0,10):
+	allArticles.seek(0)
+	firstWordsFile.seek(0)
+	firstWord = getFirstWord(firstWordsFile)
+	randomLine = random.choice(findLines(firstWord,allArticles))
+	secondWord = bfUtils.tokenizeLine(randomLine)[1]
+	print m.generate_markov_text(firstWord,secondWord)
