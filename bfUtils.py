@@ -1,6 +1,7 @@
 #encoding: utf-8
 import articleGenerator
 import re
+
 def tokenizeLine(s):
 	tokens = re.findall("(?:(?<=[\"])[^\"]*(?=[\"]*)|[\\w\'()?\n]+)",s)
 	if len(tokens) == 0:
@@ -49,28 +50,3 @@ def questionLines(filename):
 	for line in filename.readlines():
 		if line[len(line)-2] == "?":
 			yield line
-
-f = open('bfArticles-cleaned.txt')
-
-# words = countWords(f)
-# for w in sorted(words, key=words.get,reverse=True):
-# 	if(words.get(w) < 20):
-# 		break
-# 	if(w.find(' ') > 0):
-# 		print(w, words.get(w))
-
-# words = countWords(f)
-# for w in sorted( words , key=words.get, reverse=True):
-# 	if (words.get(w) < 100):
-# 		break
-# 	print(w , words.get(w))
-
-# Output first words to file
-words = countFirstWords(f)
-output = open('firstWords.txt','w')
-for word in sorted(words , key=words.get, reverse=True):
-	if ( words.get(word) < 100 ):
-		break
-	output.write(word +'\n')
-output.close()
-

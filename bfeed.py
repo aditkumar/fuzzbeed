@@ -30,6 +30,29 @@ output = open('bfArticles.txt', 'w')
 for single_date in dateRange( date(2013,1,1), date(2013,11,15) ):
 	print(single_date)
 	writeDay(single_date, output)
-
-
 output.close()
+
+
+# f = open('bfArticles-cleaned.txt')
+
+# # words = countWords(f)
+# # for w in sorted(words, key=words.get,reverse=True):
+# # 	if(words.get(w) < 20):
+# # 		break
+# # 	if(w.find(' ') > 0):
+# # 		print(w, words.get(w))
+
+# # words = countWords(f)
+# # for w in sorted( words , key=words.get, reverse=True):
+# # 	if (words.get(w) < 100):
+# # 		break
+# # 	print(w , words.get(w))
+
+# # Output first words to file
+# words = countFirstWords(f)
+# output = open('firstWords.txt','w')
+# for word in sorted(words , key=words.get, reverse=True):
+# 	if ( words.get(word) < 100 ):
+# 		break
+# 	output.write(word +'\n')
+# output.close()

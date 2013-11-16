@@ -1,7 +1,7 @@
 import random
 import string 
 import re
-import firstWords
+import bfUtils
 
 class Markov(object):
 	
@@ -17,7 +17,7 @@ class Markov(object):
 		wordList = list()
 		self.open_file.seek(0)
 		for line in self.open_file.readlines():
-			tokenizedLine = firstWords.tokenizeLine(line)
+			tokenizedLine = bfUtils.tokenizeLine(line)
 			wordList.extend(tokenizedLine)
 		return wordList
 		
