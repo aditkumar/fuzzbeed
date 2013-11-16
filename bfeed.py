@@ -17,6 +17,7 @@ def writeDay( day, file):
 		if len(aTitle) > 0 :
 			file.write(aTitle + "\n")
 
+
 # 	print ("http://www.buzzfeed.com/archive/" + single_date.strftime("%Y/%m/%d"))
 # currentURL = 'http://www.buzzfeed.com/archive/2013/11/13'
 # page = urllib2.urlopen(currentURL).read()
@@ -26,7 +27,7 @@ def writeDay( day, file):
 # 	print article.find('a').text.encode('utf-8').strip()
 	
 output = open('bfArticles.txt', 'w')
-for single_date in dateRange( date(2013,1,1), date(2013,11,13) ):
+for single_date in dateRange( date(2013,1,1), date(2013,11,15) ):
 	print(single_date)
 	writeDay(single_date, output)
 

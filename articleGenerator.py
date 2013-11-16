@@ -1,6 +1,7 @@
 import random
 import string 
 import re
+import firstWords
 
 class Markov(object):
 	
@@ -11,15 +12,14 @@ class Markov(object):
 		self.word_size = len(self.words)
 		self.database()
 		
-	def tokenizeLine(s):
-		tokens = re.findall("\\b(?:(?<=\")[^\"]*(?=\")|\\w+)\\b", s)
-		return tokens
 	
 	def file_to_words(self):
+		wordList = list()
 		self.open_file.seek(0)
-		data = self.open_file.read()
-		words = data.split()
-		return words
+		for line in self.open_file.readlines():
+			tokenizedLine = firstWords.tokenizeLine(line)
+			wordList.extend(tokenizedLine)
+		return wordList
 		
 	
 	def triples(self):
@@ -45,7 +45,7 @@ class Markov(object):
 	def generate_markov_text(self, firstWord, secondWord, size=11):
 		w1, w2 = firstWord , secondWord
 		gen_words = []
-		while w2[len(w2)-1] not in string.punctuation:
+		while len ( re.findall('\n',w2) ) < 1 and len(gen_words) < 30:
 			gen_words.append(w1)
 			w1, w2 = w2, random.choice(self.cache[(w1, w2)])
 		gen_words.append(w2)
