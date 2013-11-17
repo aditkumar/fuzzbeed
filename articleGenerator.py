@@ -2,7 +2,7 @@
 import random
 import string 
 import re
-import bfUtils
+import bfeed
 
 class Markov(object):
 	
@@ -18,7 +18,7 @@ class Markov(object):
 		wordList = list()
 		self.open_file.seek(0)
 		for line in self.open_file.readlines():
-			tokenizedLine = bfUtils.tokenizeLine(line)
+			tokenizedLine = bfeed.tokenizeLine(line)
 			wordList.extend(tokenizedLine)
 		return wordList
 		
