@@ -45,11 +45,10 @@ class Markov(object):
 				
 	def generate_markov_text(self, firstWord, secondWord, size=11):
 		w1, w2 = firstWord , secondWord
-		gen_words = []
+		gen_words = [w1,w2]
 		while len ( re.findall('\n',w2) ) < 1 and len(gen_words) < 30:
-			gen_words.append(w1)
 			w1, w2 = w2, random.choice(self.cache[(w1, w2)])
-		gen_words.append(w2)
+			gen_words.append(w2)
 		return ' '.join(gen_words)
 			
 			

@@ -1,69 +1,40 @@
-#encoding: utf-8
+# encoding: utf-8
+from bs4 import BeautifulSoup
 import re
 import string
 import nltk
 import csv
 
+import json 
 import articleGenerator
 import bfUtils
+import bfeed
 import bfHeadline
 
-fileName = open('sentenceStructures-withFrequencies')
+# def getTumblrData(api_key, tag):
+# 	payload = {'tag' : tag ,'api_key' : api_key}
+# 	tumblrTags = 'http://api.tumblr.com/v2/tagged'
 
-lines = []
-for line in fileName.readlines():
-	lines.append(line.split(' ')[0])
-
-s = '18 Cute Cozies Your Tortoise Can Rock Winter'
-print bfUtils.validSentence(s,lines)
+# 	r = requests.get(tumblrTags, params=payload)
 
 
-# firstWordsFile = open('firstWords.txt')
-# allArticles = open('bfArticles-cleaned.txt')
-# m = articleGenerator.Markov(allArticles)
+# 	output = []
+# 	for post in r.json()['response']:
+# 		outpost = {}
+# 		# print json.dumps(post, indent=2)
+# 		outpost['source'] = post['short_url']
+# 		if 'title' in post.keys():
+# 			outpost['title'] = post['title']
+# 			body = post['body']
+# 			outpost['img'] = re.findall('"http.+["$]',body)[0].strip('"')
+# 		if 'photos' in post.keys():
+# 			for photo in post['photos']:
+# 				outpost['title'] = ''.join( BeautifulSoup( post.get('caption') ).findAll( text = True ) )
+# 				outpost['img']  = photo.get('original_size').get('url')
+# 		output.append(outpost)
+# 	return output
 
-# for i in range (0,3):
-# 	headline = bfHeadline.generateHeadline(firstWordsFile,allArticles,m)
-# 	tokens = nltk.word_tokenize(headline)
-# 	tagged = nltk.pos_tag(tokens)
-# 	print tagged
-
-
-# lines = allArticles.readlines()
-# out = open('sentenceStructures-withFrequencies','w')
-# cw = csv.writer(out, delimiter='\n')
-# lineStructures = {}
-# count = 1
-# for line in lines:
-	# print nltk.sent_tokenize(line)
-	# print nltk.word_tokenize(line)
-	
-# 	print bfUtils.sentenceStructure(line)
-
-# 	if count % 100 == 0:
-# 		print count
-# 	if count > 100:
-# 		break
-# 	count = count + 1
-
-# toAdd = []
-# for k in sorted(lineStructures, key=lineStructures.get , reverse=True):
-# 	toAdd.append(''.join( [k , ' ' , str(lineStructures.get(k))] ))
-
-# cw.writerows([toAdd])
-# out.close()
-	# print k , lineStructures.get(k)
-# 	out.writelines(k , lineStructures.get(k))
-	
-	# print pos_tags
-	# print text
-	
-
-
-
-'''
-tagged = nltk.FreqDist( tag for (word, tag) in out)
-print tagged
-for k in tagged.keys():
-	print k , tagged[k]
-'''
+apikey = 'p8HvsZZVGCX5NsbdwKeVMBVa8QMDm095lYr2CiiPTuNza5tIZq'
+tag = 'kobe dunk'
+tposts = bfeed.getTumblrData(apikey,tag)
+print json.dumps(tposts,indent=2)
