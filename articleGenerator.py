@@ -3,9 +3,11 @@ import random
 import string 
 import re
 import bfeed
+import nltk
+import json
 
 class Markov(object):
-	
+	# Adapted from code from Shabda Raaj found at: http://agiliq.com/blog/2009/06/generating-pseudo-random-text-with-markov-chains-u/
 	def __init__(self, open_file):
 		self.cache = {}
 		self.open_file = open_file
@@ -44,12 +46,21 @@ class Markov(object):
 				self.cache[key] = [w3]
 				
 	def generate_markov_text(self, firstWord, secondWord, size=11):
+		wfreq = open('wordFreq.json')
+		wfreqdict = json.loads(wfreq.read())
 		w1, w2 = firstWord , secondWord
 		gen_words = [w1,w2]
 		while len ( re.findall('\n',w2) ) < 1 and len(gen_words) < 30:
 			w1, w2 = w2, random.choice(self.cache[(w1, w2)])
 			gen_words.append(w2)
-		return ' '.join(gen_words)
+		keyword = w2.lower().strip('\n')
+		for word in gen_words:
+			pos = nltk.pos_tag([word.lower()])[0][1]
+			freq = wfreqdict.get(word.lower().strip('\n'))
+			if pos[0] == 'N'  and freq > 10 and freq > wfreqdict.get(keyword):
+				keyword = word.lower().strip('\n')
+		wfreq.close()
+		return [' '.join(gen_words).strip('\n') , keyword]
 			
 			
 		

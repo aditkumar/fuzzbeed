@@ -1,0 +1,29 @@
+<!doctype html>
+<title>FuzzBeed</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+  <h1>FuzzBeed</h1>
+  <div class=metanav>
+  </div>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}
+    <div> {{ headline }} </div>
+    <div class =image-container>
+      {% for post in postData %}
+        <div class=post>
+          <div class=postTitle>
+            {{post['title']}}
+          </div>
+          <p>
+            <img src="{{post['img']}}"/>
+          </p>
+          <div class=citation>
+            <a href="{{post['source']}}">Source</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endblock %}
+</div>

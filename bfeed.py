@@ -51,26 +51,25 @@ def createFirstWordFile():
 def getTumblrData(api_key, tag):
 	payload = {'tag' : tag ,'api_key' : api_key}
 	tumblrTags = 'http://api.tumblr.com/v2/tagged'
-
 	r = requests.get(tumblrTags, params=payload)
-
 
 	output = []
 	for post in r.json()['response']:
 		outpost = {}
-		# print json.dumps(post, indent=2)
 		outpost['source'] = post['short_url']
-		if 'title' in post.keys():
+		if 'title' in post.keys() and 'body' in post.keys():
 			outpost['title'] = post['title']
 			body = post['body']
-			outpost['img'] = re.findall('"http.+["$]',body)[0].strip('"')
+			imgs = re.findall('"http.+["$]',body)
+			if len(imgs) > 0:
+				outpost['img'] = imgs[0].strip('"')
 		if 'photos' in post.keys():
 			for photo in post['photos']:
 				outpost['title'] = ''.join( BeautifulSoup( post.get('caption') ).findAll( text = True ) )
 				outpost['img']  = photo.get('original_size').get('url')
 		output.append(outpost)
 	return output
-
+	
 def tokenizeLine(s):
 	tokens = re.findall("(?:(?<=[\"])[^\"]*(?=[\"]*)|[\\w\'()?\n]+)",s)
 	if len(tokens) == 0:
@@ -129,3 +128,14 @@ def questionLines(filename):
 	for line in filename.readlines():
 		if line[len(line)-2] == "?":
 			yield line
+
+def generateWordFrequency(allArticles):
+	words  = []
+	allArticles.seek(0)
+	for line in allArticles.readlines():
+		linewords = tokenizeLine(line.strip('\n').lower())
+		words.extend(linewords)
+	fdist = nltk.FreqDist(words)
+	f = open('wordFreq.json','w')
+	f.write(json.dumps(fdist,indent=2))
+	f.close()

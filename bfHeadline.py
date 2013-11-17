@@ -4,7 +4,7 @@ import re
 import csv
 import bfeed
 import articleGenerator
-
+import json
 
 def getFirstWord(fileName):
 	words = fileName.read().split()
@@ -35,12 +35,11 @@ if __name__ == "__main__":
 	m = articleGenerator.Markov(allArticles)
 	
 	out = open('sampleHeadlines.txt','w')
-	cw = csv.writer(out, delimiter='\n')
 	outList = []
-	for i in range (0,100):
-		outList.append(generateHeadline(firstWordsFile,allArticles,m).strip())
+	for i in range (0,10):
+		outList.append(generateHeadline(firstWordsFile,allArticles,m))
 	
-	cw.writerows([outList])
+	out.write(json.dumps(outList,indent=2))
 	out.close()
 	firstWordsFile.close()
 	allArticles.close()
