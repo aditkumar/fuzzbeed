@@ -1,6 +1,7 @@
 #encoding: utf-8
 import articleGenerator
 import re
+import nltk
 
 def tokenizeLine(s):
 	tokens = re.findall("(?:(?<=[\"])[^\"]*(?=[\"]*)|[\\w\'()?\n]+)",s)
@@ -12,6 +13,16 @@ def tokenizeLine(s):
 			return []
 		tokens[len(tokens)-1] = tokens[len(tokens)-1] + '\n'
 	return tokens
+
+def sentenceStructure(line):
+	tagged =  nltk.pos_tag(tokenizeLine(line.lower()))
+	structure = ''.join([part[1] for part in tagged])
+	return structure
+
+def validSentence(s,validStructures):
+	ss = sentenceStructure(s)
+	print (ss)
+	return validStructures.count(ss) > 0 
 
 def countFirstWords(filename):
 	words = {}

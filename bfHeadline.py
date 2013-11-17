@@ -18,16 +18,27 @@ def findLines(firstWord,fileName):
 				output.append(line)
 	return output
 
+def generateHeadline(firstWordsFile, allArticles, markovGenerator):
+	lines = []
+	for line in allArticles.readlines():
+		lines.append(line.split(' ')[0])
+	count = 0
+	while count < 10:
+		allArticles.seek(0)
+		firstWordsFile.seek(0)
+		firstWord = getFirstWord(firstWordsFile)
+		randomLine = random.choice(findLines(firstWord,allArticles))
+		secondWord = bfUtils.tokenizeLine(randomLine)[1]
+		
+		candidate =  markovGenerator.generate_markov_text(firstWord,secondWord)
+		if (bfUtils.validSentence(candidate,lines)):
+			return candidate
+		count = count + 1
 
-firstWordsFile = open('firstWords.txt')
+if __name__ == "__main__":
+	firstWordsFile = open('firstWords.txt')
+	allArticles = open('bfArticles-cleaned.txt')
+	m = articleGenerator.Markov(allArticles)
 
-allArticles = open('bfArticles-cleaned.txt')
-m = articleGenerator.Markov(allArticles)
-
-for i in range (0,10):
-	allArticles.seek(0)
-	firstWordsFile.seek(0)
-	firstWord = getFirstWord(firstWordsFile)
-	randomLine = random.choice(findLines(firstWord,allArticles))
-	secondWord = bfUtils.tokenizeLine(randomLine)[1]
-	print m.generate_markov_text(firstWord,secondWord)
+	for i in range (0,10):
+		print generateHeadline(firstWordsFile,allArticles,m)
