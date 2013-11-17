@@ -4,7 +4,11 @@ h1, h2          { font-family: 'Georgia', serif; margin: 0; }
 h1              { border-bottom: 2px solid #eee; }
 h2              { font-size: 1.2em; }
 
-.page           { margin: 2em auto; width: 35em; border: 5px solid #ccc;
+.post-title { clear: left; color: #333333; font-family: "ProximaNovaSemibold",Helvetica,Arial,sans-serif; font-size: 36px; font-weight: normal; line-height: 38px; margin: 10px 0; text-transform: none; letter-spacing: normal; }
+.post-caption { margin: 0 0 20px 0; font-family: 'ProximaNovaSemibold', arial, sans-serif; font-size: 24px; padding: 0px; }
+.citation { font: 12px/15px "ProximaNovaRegular", Helvetica, Arial, sans-serif; color: #999; font-style: italic; } /* SRCVIA */
+
+.page           { margin: 2em auto; width: 55em; border: 5px solid #ccc;
                   padding: 0.8em; background: white; }
 .entries        { list-style: none; margin: 0; padding: 0; }
 .entries li     { margin: 0.8em 1.2em; }

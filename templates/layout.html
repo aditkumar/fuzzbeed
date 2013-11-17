@@ -2,18 +2,18 @@
 <title>FuzzBeed</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <div class=page>
-  <h1>FuzzBeed</h1>
+  <div><img src="{{url_for('static', filename='fuzzbeed_logo.png') }}" alt="FuzzBeed"/></div>
   <div class=metanav>
   </div>
   {% for message in get_flashed_messages() %}
     <div class=flash>{{ message }}</div>
   {% endfor %}
   {% block body %}
-    <div> {{ headline }} </div>
+    <div class=post-title> {{ headline }} </div>
     <div class =image-container>
       {% for post in postData %}
         <div class=post>
-          <div class=postTitle>
+          <div class=post-caption>
             {{post['title']}}
           </div>
           <p>
