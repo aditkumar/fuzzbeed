@@ -5,11 +5,11 @@ import json
 
 from flask import Flask, render_template
 app = Flask(__name__)
-secret = json.loads(open('secret.json').read())
+secret = json.loads(open('./secret.json').read())
 apikey = secret.get('tumblrAPI')
 
-firstWordsFile = open('firstWords.txt')
-allArticles = open('bfArticles-cleaned.txt')
+firstWordsFile = open('./firstWords.txt')
+allArticles = open('./bfArticles-cleaned.txt')
 m = articleGenerator.Markov(allArticles)
 
 @app.route("/")
