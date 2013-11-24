@@ -4,26 +4,37 @@
 <div class=page>
   <div><img src="{{url_for('static', filename='fuzzbeed_logo.png') }}" alt="FuzzBeed"/></div>
   <div class=metanav>
+              <ul class=nav navbar-nav>
+                <li class=active>NEWS</li>
+                <li>ENTERTAINMENT</li>
+                <li>LIFE</li>
+                <li>VIDEO</li>
+                <li>MORE</li>
+                <li class=tweet-this>
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://localhost:5000" data-text="Fuzzbeed, A Buzzfeed Article Generator by @aditkumar" data-size="large" data-dnt="true">Tweet</a>
+                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </li>
+              </ul>
   </div>
-  {% for message in get_flashed_messages() %}
-    <div class=flash>{{ message }}</div>
-  {% endfor %}
   {% block body %}
     <div class=post-title> {{ headline }} </div>
+    <hr class=titlebar/>
     <div class =image-container>
       {% for post in postData %}
         <div class=post>
           <div class=post-caption>
             {{post['title']}}
           </div>
-          <p>
-            <img src="{{post['img']}}"/>
-          </p>
+            <img class=postImage src="{{post['img']}}"/>
           <div class=citation>
             <a href="{{post['source']}}">Source</a>
           </div>
         </div>
+        <hr>
       {% endfor %}
     </div>
   {% endblock %}
+  <div class=citation style="text-align: center">
+    Powered by <a href="http://www.tumblr.com">Tumblr</a>. Made with love for <a href="http://www.buzzfeed.com">Buzzfeed</a>. Copyright 2013 <a href="http://www.twitter.com/aditkumar">Adit Kumar</a>.
+  </div>
 </div>

@@ -1,42 +1,42 @@
 [
   [
-    "22 New Fashion Affair Involving Naomi Campbell Is The Greatest The Price Is Right  Contestant Ever", 
-    "fashion"
+    "29 Dogs Getting Trimmed Blow Dried And Powdered Backstage At Paris Hilton's Life", 
+    "life"
   ], 
   [
-    "19 Maps That Will Make You Proud To Stand With Rand", 
-    "rand"
+    "If The Art Of Elysium's 6th Annual Black Tie Gala", 
+    "art"
   ], 
   [
-    "Jennifer Lawrence's Dior Phase?", 
-    "jennifer"
+    "7 Times The Cast Of The Hunger Games  Broke Character", 
+    "times"
   ], 
   [
-    "Can Transformative Justice Stop Rape?", 
-    "stop"
+    "Meet The Craziest Bras Ever Created", 
+    "meet"
   ], 
   [
-    "You Know You Went To Disney World", 
-    "world"
+    "Is Zach Braff Helped A Writer Find Success In Hollywood", 
+    "hollywood"
   ], 
   [
-    "17 Reasons Why You Should Know Judy Greer's Name", 
+    "27 Music Stars When They Came Out", 
+    "out"
+  ], 
+  [
+    "33 Reasons Mustard Yellow Is The Only Post You Need To Stop Snorting Condoms", 
     "reasons"
   ], 
   [
-    "22 Important Reasons Why The NBA Turns Old Guys Rule Everything Around Me", 
-    "reasons"
+    "New Jersey Supreme Court Justices Appear Cautious On Same Sex Couples In Hollywood California", 
+    "sex"
   ], 
   [
-    "Everything About This Year's Little Miss Sunshine", 
-    "everything"
+    "Obama Comments On Beyonc 's Absolute Best Style Tips For Your Royal Baby", 
+    "obama"
   ], 
   [
-    "If You Type The Konami Code On British TV", 
-    "tv"
-  ], 
-  [
-    "An IPO Tale Of The Aircraft Carrier", 
-    "ipo"
+    "If Walter Jr From Breaking Bad  Is Absolutely Hysterical", 
+    "jr"
   ]
 ]
