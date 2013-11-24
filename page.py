@@ -9,7 +9,7 @@ app = Flask(__name__)
 firstWordsFile = open('./firstWords.txt')
 allArticles = open('./bfArticles-cleaned.txt')
 m = articleGenerator.Markov(allArticles)
-secret = json.loads(open('./secret.json').read())
+secret = json.loads(open('./apis.txt').read())
 apikey = secret.get('tumblrAPI')
 
 
