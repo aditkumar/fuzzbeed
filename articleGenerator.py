@@ -47,6 +47,7 @@ class Markov(object):
 				
 	def generate_markov_text(self, firstWord, secondWord, size=11):
 		wfreq = open('wordFreq.json')
+		validWords = json.loads(open('allNouns.txt').read()).keys()
 		wfreqdict = json.loads(wfreq.read())
 		w1, w2 = firstWord , secondWord
 		gen_words = [w1,w2]
@@ -55,10 +56,9 @@ class Markov(object):
 			gen_words.append(w2)
 		keyword = w2.lower().strip('\n')
 		for word in gen_words:
-			pos = nltk.pos_tag([word.lower()])[0][1]
-			freq = wfreqdict.get(word.lower().strip('\n'))
-			if pos[0] == 'N'  and freq > 10 and freq > wfreqdict.get(keyword):
-				keyword = word.lower().strip('\n')
+			candidate = word.lower().strip('\n') 
+			if candidate in validWords and wfreqdict[candidate] > wfreqdict[keyword]:
+				keyword = candidate
 		wfreq.close()
 		return [' '.join(gen_words).strip('\n') , keyword]
 			
