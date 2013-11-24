@@ -1,4 +1,3 @@
-import os
 import articleGenerator
 import bfeed
 import bfHeadline
@@ -6,11 +5,12 @@ import json
 
 from flask import Flask, render_template
 app = Flask(__name__)
-secret = json.loads(open( os.path.join(os.path.dirname(__file__), './secret.json')).read())
+
+firstWordsFile = open('./firstWords.txt')
+allArticles = open('./bfArticles-cleaned.txt')
+secret = json.loads(open('./secret.json').read())
 apikey = secret.get('tumblrAPI')
 
-firstWordsFile = open( os.path.join(os.path.dirname(__file__), './firstWords.txt'))
-allArticles = open( os.path.join(os.path.dirname(__file__), './bfArticles-cleaned.txt'))
 m = articleGenerator.Markov(allArticles)
 
 @app.route("/")
