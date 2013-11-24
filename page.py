@@ -6,7 +6,7 @@ import json
 from flask import Flask, render_template
 app = Flask(__name__)
 app.debug = True
-secret = json.loads(open('./secret.json').read())
+secret = json.loads(open('./apis.txt').read())
 apikey = secret.get('tumblrAPI')
 
 firstWordsFile = open('./firstWords.txt')
