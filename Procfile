@@ -1,1 +1,1 @@
-web: python page.py
+web: gunicorn page:homepage

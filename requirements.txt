@@ -4,3 +4,4 @@ beautifulsoup4==4.3.2
 nltk==2.0.4
 python-dateutil==1.5
 requests==2.0.1
+gunicorn==18.0
