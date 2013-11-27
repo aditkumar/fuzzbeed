@@ -72,7 +72,7 @@ def getTumblrData(api_key, tag):
 	return output
 
 def getGiphyData(api_key, headline):
-	payload = {'q' : headline ,'api_key' : api_key}
+	payload = {'q' : headline ,'limit' : 5, 'api_key' : api_key}
 	giphySearch = 'http://api.giphy.com/v1/gifs/search'
 	r = requests.get(giphySearch, params=payload)
 
