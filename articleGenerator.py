@@ -8,14 +8,15 @@ import json
 
 class Markov(object):
 	# Adapted from code from Shabda Raaj found at: http://agiliq.com/blog/2009/06/generating-pseudo-random-text-with-markov-chains-u/
-	def __init__(self, open_file):
+	def __init__(self, open_file, valid_words):
 		self.cache = {}
 		self.open_file = open_file
+		self.valid_words = valid_words
 		self.words = self.file_to_words()
 		self.word_size = len(self.words)
 		self.database()
 		
-	
+		
 	def file_to_words(self):
 		wordList = list()
 		self.open_file.seek(0)
@@ -46,9 +47,7 @@ class Markov(object):
 				self.cache[key] = [w3]
 				
 	def generate_markov_text(self, firstWord, secondWord, size=11):
-		wfreq = open('wordFreq.json')
-		validWords = json.loads(open('allNouns.txt').read()).keys()
-		wfreqdict = json.loads(wfreq.read())
+		# validWords = json.loads(open('allNouns.txt').read()).keys()
 		w1, w2 = firstWord , secondWord
 		gen_words = [w1,w2]
 		while len ( re.findall('\n',w2) ) < 1 and len(gen_words) < 30:
@@ -57,9 +56,8 @@ class Markov(object):
 		keyword = [ w2.lower().strip('\n') ]
 		for word in gen_words:
 			candidate = word.lower().strip('\n') 
-			if candidate in validWords:
+			if candidate in self.valid_words:
 				keyword.append(candidate)
-		wfreq.close()
 		return [' '.join(gen_words).strip('\n') , keyword]
 			
 			

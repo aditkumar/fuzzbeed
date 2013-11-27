@@ -12,7 +12,8 @@ giphyAPIkey = secret.get('giphyAPI')
 
 firstWordsFile = open('./firstWords.txt')
 allArticles = open('./bfArticles-cleaned.txt')
-m = articleGenerator.Markov(allArticles)
+validWords = json.loads(open('allNouns.txt').read()).keys()
+m = articleGenerator.Markov(allArticles, validWords)
 
 @app.route("/")
 def homepage():
