@@ -1,8 +1,18 @@
 <!doctype html>
 <head>
-  <title>FuzzBeed</title>
+  <title>FuzzBeed: A BuzzFeed Article Generator</title>
   <link rel="icon" href="{{url_for('static',filename='fb_favicon.ico')}}" type="image/x-icon" />
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46048653-1', 'fuzzbeed.net');
+  ga('send', 'pageview');
+
+</script>
 </head>
 <body>
 
@@ -16,7 +26,7 @@
                 <li>VIDEO</li>
                 <li>MORE</li>
                 <li class=tweet-this>
-                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://fuzzbeed.herokuapp.com" data-text="Fuzzbeed, A Buzzfeed Article Generator by @aditkumar" data-size="large" data-dnt="true">Tweet</a>
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.fuzzbeed.net" data-text="Fuzzbeed, A Buzzfeed Article Generator by @aditkumar" data-size="large" data-dnt="true">Tweet</a>
                   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                 </li>
               </ul>
