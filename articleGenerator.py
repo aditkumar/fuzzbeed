@@ -54,11 +54,11 @@ class Markov(object):
 		while len ( re.findall('\n',w2) ) < 1 and len(gen_words) < 30:
 			w1, w2 = w2, random.choice(self.cache[(w1, w2)])
 			gen_words.append(w2)
-		keyword = w2.lower().strip('\n')
+		keyword = [ w2.lower().strip('\n') ]
 		for word in gen_words:
 			candidate = word.lower().strip('\n') 
-			if candidate in validWords and wfreqdict[candidate] > wfreqdict[keyword]:
-				keyword = candidate
+			if candidate in validWords:
+				keyword.append(candidate)
 		wfreq.close()
 		return [' '.join(gen_words).strip('\n') , keyword]
 			

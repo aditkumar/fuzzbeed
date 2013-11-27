@@ -67,8 +67,23 @@ def getTumblrData(api_key, tag):
 			for photo in post['photos']:
 				outpost['title'] = ''.join( BeautifulSoup( post.get('caption') ).findAll( text = True ) )
 				outpost['img']  = photo.get('original_size').get('url')
-		output.append(outpost)
+		if 'img' in outpost.keys():
+			output.append(outpost)
 	return output
+
+def getGiphyData(api_key, headline):
+	payload = {'q' : headline ,'api_key' : api_key}
+	giphySearch = 'http://api.giphy.com/v1/gifs/search'
+	r = requests.get(giphySearch, params=payload)
+
+	output =[]
+	for post in r.json()['data']:
+		currentpost = {}
+		currentpost['source'] = post['embed_url']
+		currentpost['img'] = post['images']['original']['url']
+		output.append(currentpost)
+	return output
+
 	
 def tokenizeLine(s):
 	tokens = re.findall("(?:(?<=[\"])[^\"]*(?=[\"]*)|[\\w\'()?\n]+)",s)

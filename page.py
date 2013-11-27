@@ -7,7 +7,8 @@ from flask import Flask, render_template
 app = Flask(__name__)
 app.debug = True
 secret = json.loads(open('./apis.txt').read())
-apikey = secret.get('tumblrAPI')
+# apikey = secret.get('tumblrAPI')
+giphyAPIkey = secret.get('giphyAPI')
 
 firstWordsFile = open('./firstWords.txt')
 allArticles = open('./bfArticles-cleaned.txt')
@@ -16,16 +17,13 @@ m = articleGenerator.Markov(allArticles)
 @app.route("/")
 def homepage():
 	headlinePhrase = bfHeadline.generateHeadline(firstWordsFile,allArticles,m)
-	keyword = headlinePhrase[1]
+	keywords = headlinePhrase[1]
 	title = headlinePhrase[0]
-	tumblrData = bfeed.getTumblrData(apikey, keyword)
-	postData = []
-	for post in tumblrData:
-		if 'img' not in post.keys():
-			continue
-		postData.append(post)
+	tumblrData = []
+	for keyword in keywords:
+		tumblrData.extend(bfeed.getGiphyData(giphyAPIkey, keyword))
 	# return json.dumps(postData, indent=1)
-	return render_template('layout.html', headline=title, postData=postData)
+	return render_template('layout.html', headline=title, postData=tumblrData[:4])
 
 if __name__ == "__main__":
     app.debug = True

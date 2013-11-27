@@ -1,6 +1,11 @@
 <!doctype html>
-<title>FuzzBeed</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<head>
+  <title>FuzzBeed</title>
+  <link rel="icon" href="{{url_for('static',filename='fb_favicon.ico')}}" type="image/x-icon" />
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
 <div class=page>
   <div><img src="{{url_for('static', filename='fuzzbeed_logo.png') }}" alt="FuzzBeed"/></div>
   <div class=metanav>
@@ -38,3 +43,5 @@
     Powered by <a href="http://www.tumblr.com">Tumblr</a>. Made with love for <a href="http://www.buzzfeed.com">Buzzfeed</a>. Copyright 2013 <a href="http://www.twitter.com/aditkumar">Adit Kumar</a>.
   </div>
 </div>
+</body>
+</html>
