@@ -197,7 +197,6 @@ body.UserPage.advertister .unified_header .lower #nav-right #nav-signin #usernav
     margin: 0 0 0 10px;
 }
 .unified_header .lower #nav-right #nav-shares #fb-share {
-    background: url("/static/images/global/buzzfeed_sprite.png?v=201311271541") no-repeat scroll -268px -248px / 47px 20px rgba(0, 0, 0, 0);
     overflow: hidden;
     padding: 0;
     width: 48px;
@@ -221,10 +220,9 @@ body.UserPage.advertister .unified_header .lower #nav-right #nav-signin #usernav
     top: -41px;
 }
 .unified_header .lower #nav-right #nav-shares #tw-share {
-    background: url("/static/images/global/buzzfeed_sprite.png?v=201311271541") no-repeat scroll -268px -269px / 58px 20px rgba(0, 0, 0, 0);
     overflow: hidden;
     padding: 0;
-    width: 61px;
+    width: auto;
 }
 .unified_header .lower #nav-right #nav-shares .partner_links_label {
     float: left;
